@@ -55,18 +55,20 @@ function HeroSection() {
                             <button className="btn-secondary">See How It Works</button>
                         </div>
                     </div>
-                    <div className="computer-mockup fade-in">
-                        <img
-                            src="img/computer.jpeg"
-                            alt="SellWell Dashboard"
-                            loading="lazy"
-                            decoding="async"
-                            crossOrigin="anonymous"
-                            width="500"
-                            height="390"
-                            className="rounded-lg"
-                            style={{ color: 'transparent' }}
-                        />
+                    <div className="dashboard-mockup">
+                        <div class="dashboard-container">
+                            <img
+                                src="img/computer.jpeg"
+                                alt="SellWell Dashboard"
+                                loading="lazy"
+                                decoding="async"
+                                crossOrigin="anonymous"
+                                width="500"
+                                height="390"
+                                className="rounded-lg"
+                                style={{ color: 'transparent' }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
