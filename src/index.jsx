@@ -63,7 +63,7 @@ function HeroSection() {
                                 loading="lazy"
                                 decoding="async"
                                 crossOrigin="anonymous"
-                                width="500"
+                                width="600"
                                 height="390"
                                 className="rounded-lg"
                                 style={{ color: 'transparent' }}
@@ -86,9 +86,15 @@ function TrustedSection() {
                     <p>From small businesses to established online stores.</p>
                 </div>
                 <div className="trusted-logos">
-                    <img src="https://ext.same-assets.com/3362785840/1463097282.png" alt="eBay" />
-                    <img src="https://ext.same-assets.com/3362785840/2754403652.png" alt="Amazon" />
-                    <img src="https://ext.same-assets.com/3362785840/2905511436.png" alt="Etsy" />
+                    <a href="https://www.ebay.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://ext.same-assets.com/3362785840/1463097282.png" alt="eBay" />
+                    </a>
+                    <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://ext.same-assets.com/3362785840/2754403652.png" alt="Amazon" />
+                    </a>
+                    <a href="https://www.etsy.com" target="_blank" rel="noopener noreferrer">
+                        <img src="https://ext.same-assets.com/3362785840/2905511436.png" alt="Etsy" />
+                    </a>
                 </div>
             </div>
         </section>
@@ -99,17 +105,20 @@ function TrustedSection() {
 function FeaturesSection() {
     const features = [
         {
-            icon: '✉️',
+            icon: 'img/email.png',
+            alt: 'Email icon',
             title: 'AI-Powered Email Assistant',
             description: 'Automatically respond to customer inquiries, answer questions about products, and handle routine communications without lifting a finger.'
         },
         {
-            icon: '🤝',
+            icon: 'img/neg.png',
+            alt: 'Negotiation icon',
             title: 'Smart Negotiation Engine',
             description: 'Let AI negotiate the best deals with buyers, automatically generating counteroffers based on your pricing strategy and inventory levels.'
         },
         {
-            icon: '📦',
+            icon: 'img/inv.png',
+            alt: 'Inventory icon',
             title: 'Real-time Inventory Tracking',
             description: 'Monitor stock levels across all your selling platforms, receive alerts for low inventory, and automate reordering processes.'
         }
@@ -128,7 +137,10 @@ function FeaturesSection() {
                 <div className="features-grid">
                     {features.map((feature, index) => (
                         <div key={index} className="feature-card fade-in">
-                            <div className="feature-icon">{feature.icon}</div>
+                            {/* THIS IS THE CHANGE */}
+                            <div className="feature-icon">
+                                <img src={feature.icon} alt={feature.alt} className="feature-icon-image" />
+                            </div>
                             <h3 className="feature-title">{feature.title}</h3>
                             <p className="feature-description">{feature.description}</p>
                         </div>
