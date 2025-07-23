@@ -1,24 +1,23 @@
 const { useState, useEffect } = React;
 
-// Shopping Cart Icon Component
-function ShoppingCartIcon() {
-    return (
-        <svg className="shopping-cart-icon" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z" />
-            <path d="M9 8V17H11V8H9ZM13 8V17H15V8H13Z" />
-        </svg>
-    );
-}
-
 // Header Component
 function Header() {
+    const [isNavOpen, setIsNavOpen] = useState(false);
+    const toggleNav = () => {
+        setIsNavOpen(!isNavOpen);
+    };
+
     return (
         <header className="header bg-gradient-hero">
             <div className="container">
                 <div className="header-content">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                         <a href="#" className="logo">
-                            <ShoppingCartIcon />
+                            <img
+                                src="img/logo.png"
+                                alt="SellWell Logo"
+                                className="logo-image"
+                            />
                             SellWell
                         </a>
                         <nav className="nav">
@@ -29,10 +28,32 @@ function Header() {
                             <a href="#integrations-section">Pricing</a>
                         </nav>
                     </div>
-                    <button className="get-started-btn">Get Started</button>
+                    <div className="header-actions">
+                        <button className="get-started-btn">Get Started</button>
+
+                        {/* Hamburger Icon/Button */}
+                        <button className="menu-toggle-btn" onClick={toggleNav}>
+                            <img
+                                src="img/menu.png"
+                                alt="Menu"
+                                className="hamburger-icon"
+                            />
+                        </button>
+                    </div>
+                    {isNavOpen && (
+
+                        <nav className="dropdown-nav">
+                            <a href="#dashboard-section" onClick={() => setIsNavOpen(false)}>Dashboard</a>
+                            <a href="#features-section" onClick={() => setIsNavOpen(false)}>Features</a>
+                            <a href="#testimonial-section" onClick={() => setIsNavOpen(false)}>About</a>
+                            <a href="#contact-section" onClick={() => setIsNavOpen(false)}>Contact</a>
+                            <a href="#integrations-section" onClick={() => setIsNavOpen(false)}>Pricing</a>
+                        </nav>
+                    )}
+
                 </div>
             </div>
-        </header>
+        </header >
     );
 }
 
@@ -158,24 +179,24 @@ function DashboardSection() {
             title: 'Email Assistant',
             description: 'Set up automated email responses and track customer communication progress.',
             buttonText: 'Manage',
-            buttonClass: 'btn-blue'
+            buttonClass: 'btn-purple'
         },
         {
             title: 'Inventory Monitor',
             description: 'View current stock status with color-coded alerts and manage inventory levels.',
             buttonText: 'View',
-            buttonClass: 'btn-green'
+            buttonClass: 'btn-blue'
         },
         {
             title: 'Negotiation Tracker',
             description: 'Review and approve AI-generated counteroffers for potential buyers.',
             buttonText: 'Track',
-            buttonClass: 'btn-purple'
+            buttonClass: 'btn-green'
         }
     ];
 
     return (
-        <section id="dashboard-section" className="dashboard-section bg-gradient-section">
+        <section id="dashboard-section" className="dashboard-section bg-gradient-dashboard">
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">Your Complete Selling Dashboard</h2>
@@ -218,7 +239,7 @@ function TestimonialsSection() {
     ];
 
     return (
-        <section id="testimonial-section" className="testimonials bg-gradient-section-alt">
+        <section id="testimonial-section" className="testimonials bg-gradient-testimonies">
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">What Our Users Say</h2>
@@ -256,7 +277,7 @@ function TestimonialsSection() {
 // Integrations Section Component
 function IntegrationsSection() {
     return (
-        <section id="integrations-section" className="integrations bg-gradient-section">
+        <section id="integrations-section" className="integrations bg-gradient-integrations">
             <div className="container">
                 <div className="section-header">
                     <h2 className="section-title">Works with your favorite platforms</h2>
@@ -299,7 +320,7 @@ function ContactSection() {
     };
 
     return (
-        <section id="contact-section" className="contact bg-gradient-section-alt">
+        <section id="contact-section" className="contact bg-gradient-contact">
             <div className="contact-container">
                 <div className="section-header">
                     <h2 className="section-title">Get Started Today</h2>
@@ -385,8 +406,14 @@ function Footer() {
                 </div>
                 <div className="footer-bottom">
                     <div className="footer-logo">
-                        <ShoppingCartIcon />
-                        SellWell
+                        <a href="#" className="logo">
+                            <img
+                                src="img/logo.png"
+                                alt="SellWell Logo"
+                                className="logo-image"
+                            />
+                            SellWell
+                        </a>
                     </div>
                     <p className="footer-copyright">© 2024 SellWell. All rights reserved.</p>
                 </div>
